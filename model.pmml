@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="phsto">
+    <Application name="KNIME" version="5.2.1"/>
+  </Header>
+  <DataDictionary numberOfFields="8">
+    <DataField name="Ratings" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="RAM" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="ROM" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Mobile_Size" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Primary_Cam" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Selfi_Cam" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Battery_Power" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Price" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+  </DataDictionary>
+  <ClusteringModel modelName="k-means" functionName="clustering" modelClass="centerBased" numberOfClusters="3">
+    <MiningSchema>
+      <MiningField name="Ratings" invalidValueTreatment="asIs"/>
+      <MiningField name="RAM" invalidValueTreatment="asIs"/>
+      <MiningField name="ROM" invalidValueTreatment="asIs"/>
+      <MiningField name="Mobile_Size" invalidValueTreatment="asIs"/>
+      <MiningField name="Primary_Cam" invalidValueTreatment="asIs"/>
+      <MiningField name="Selfi_Cam" invalidValueTreatment="asIs"/>
+      <MiningField name="Battery_Power" invalidValueTreatment="asIs"/>
+      <MiningField name="Price" invalidValueTreatment="asIs"/>
+    </MiningSchema>
+    <ComparisonMeasure kind="distance">
+      <squaredEuclidean/>
+    </ComparisonMeasure>
+    <ClusteringField field="Ratings" compareFunction="absDiff"/>
+    <ClusteringField field="RAM" compareFunction="absDiff"/>
+    <ClusteringField field="ROM" compareFunction="absDiff"/>
+    <ClusteringField field="Mobile_Size" compareFunction="absDiff"/>
+    <ClusteringField field="Primary_Cam" compareFunction="absDiff"/>
+    <ClusteringField field="Selfi_Cam" compareFunction="absDiff"/>
+    <ClusteringField field="Battery_Power" compareFunction="absDiff"/>
+    <ClusteringField field="Price" compareFunction="absDiff"/>
+    <Cluster name="cluster_0" size="437">
+      <Array n="8" type="real">0.5490846681922201 0.5064836003051109 0.14285842988162037 0.07757507900185269 0.8035527285420577 0.43717043080290563 0.3557203642947071 0.010999993293492076 </Array>
+    </Cluster>
+    <Cluster name="cluster_1" size="160">
+      <Array n="8" type="real">0.7118749999999991 0.3156250000000001 0.17883858267716587 0.08746428571428573 0.53156779661017 0.21277173913043476 0.50660140562249 0.08098011913113604 </Array>
+    </Cluster>
+    <Cluster name="cluster_2" size="210">
+      <Array n="8" type="real">0.8371428571428565 0.6083333333333342 0.510386201724785 0.10320861678004524 0.7119451170298617 0.4099378881987575 0.6168483457640072 0.26286185103003773 </Array>
+    </Cluster>
+  </ClusteringModel>
+</PMML>

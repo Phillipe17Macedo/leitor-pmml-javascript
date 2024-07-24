@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cluster Calculation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cluster Calculation</h1>
+        <form id="clusterForm">
+            <label for="ratings">Ratings:</label>
+            <input type="number" id="ratings" name="ratings" step="0.01" required>
+
+            <label for="ram">RAM:</label>
+            <input type="number" id="ram" name="ram" step="0.01" required>
+
+            <label for="rom">ROM:</label>
+            <input type="number" id="rom" name="rom" step="0.01" required>
+
+            <label for="mobile_size">Mobile Size:</label>
+            <input type="number" id="mobile_size" name="mobile_size" step="0.01" required>
+
+            <label for="primary_cam">Primary Camera:</label>
+            <input type="number" id="primary_cam" name="primary_cam" step="0.01" required>
+
+            <label for="selfi_cam">Selfie Camera:</label>
+            <input type="number" id="selfi_cam" name="selfi_cam" step="0.01" required>
+
+            <label for="battery">Battery Power:</label>
+            <input type="number" id="battery" name="battery" step="0.01" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+
+            <button type="submit">Calculate Cluster</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
