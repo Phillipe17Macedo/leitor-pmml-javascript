@@ -12,8 +12,19 @@ document.getElementById('clusterForm').addEventListener('submit', function(event
         price: { min: 100, max: 2000 } // Em USD
     };
 
+    const weights = {
+        ratings: 1,
+        ram: 1,
+        rom: 1,
+        mobile_size: 1,
+        primary_cam: 1,
+        selfi_cam: 1,
+        battery: 1,
+        price: 1
+    };
+
     function normalize(value, min, max) {
-        return (value - min) / (max - min);
+        return parseFloat(((value - min) / (max - min)).toFixed(6)); // Usar mais casas decimais
     }
 
     const form = event.target;
@@ -28,24 +39,24 @@ document.getElementById('clusterForm').addEventListener('submit', function(event
     const price = parseFloat(form.price.value);
 
     const inputData = [
-        normalize(ratings, originalRanges.ratings.min, originalRanges.ratings.max),
-        normalize(ram, originalRanges.ram.min, originalRanges.ram.max),
-        normalize(rom, originalRanges.rom.min, originalRanges.rom.max),
-        normalize(mobile_size, originalRanges.mobile_size.min, originalRanges.mobile_size.max),
-        normalize(primary_cam, originalRanges.primary_cam.min, originalRanges.primary_cam.max),
-        normalize(selfi_cam, originalRanges.selfi_cam.min, originalRanges.selfi_cam.max),
-        normalize(battery, originalRanges.battery.min, originalRanges.battery.max),
-        normalize(price, originalRanges.price.min, originalRanges.price.max)
+        normalize(ratings, originalRanges.ratings.min, originalRanges.ratings.max) * weights.ratings,
+        normalize(ram, originalRanges.ram.min, originalRanges.ram.max) * weights.ram,
+        normalize(rom, originalRanges.rom.min, originalRanges.rom.max) * weights.rom,
+        normalize(mobile_size, originalRanges.mobile_size.min, originalRanges.mobile_size.max) * weights.mobile_size,
+        normalize(primary_cam, originalRanges.primary_cam.min, originalRanges.primary_cam.max) * weights.primary_cam,
+        normalize(selfi_cam, originalRanges.selfi_cam.min, originalRanges.selfi_cam.max) * weights.selfi_cam,
+        normalize(battery, originalRanges.battery.min, originalRanges.battery.max) * weights.battery,
+        normalize(price, originalRanges.price.min, originalRanges.price.max) * weights.price
     ];
 
     const centroids = {
-        cluster_1: [0.5491, 0.5065, 0.1429, 0.0776, 0.8036, 0.4372, 0.3557, 0.0110],
-        cluster_2: [0.7119, 0.3156, 0.1788, 0.0875, 0.5316, 0.2128, 0.5066, 0.0810],
-        cluster_3: [0.8371, 0.6083, 0.5104, 0.1032, 0.7119, 0.4099, 0.6168, 0.2629]
+        cluster_1: [0.549084, 0.506484, 0.142858, 0.077575, 0.803553, 0.437170, 0.355720, 0.010999],
+        cluster_2: [0.711875, 0.315625, 0.178839, 0.087464, 0.531568, 0.212772, 0.506601, 0.080980],
+        cluster_3: [0.837143, 0.608333, 0.510386, 0.103209, 0.711945, 0.409938, 0.616848, 0.262862]
     };
 
     function calculateDistance(point1, point2) {
-        return Math.sqrt(point1.reduce((sum, val, index) => sum + Math.pow(val - point2[index], 2), 0));
+        return Math.sqrt(point1.reduce((sum, val, index) => sum + Math.pow(val - point2[index], 2) * weights[Object.keys(weights)[index]], 0));
     }
 
     let minDistance = Infinity;
@@ -73,5 +84,5 @@ document.getElementById('clusterForm').addEventListener('submit', function(event
             break;
     }
 
-    document.getElementById('result').textContent = `${message}`;
+    document.getElementById('result').textContent = `Assigned Cluster: ${assignedCluster}\n${message}`;
 });
