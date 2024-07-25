@@ -1,4 +1,5 @@
 document.getElementById('clusterForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
     const originalRanges = {
         ratings: { min: 1, max: 5 },
@@ -10,12 +11,10 @@ document.getElementById('clusterForm').addEventListener('submit', function(event
         battery: { min: 1000, max: 5000 }, // Em mAh
         price: { min: 100, max: 2000 } // Em USD
     };
-    
+
     function normalize(value, min, max) {
         return (value - min) / (max - min);
-    }    
-
-    event.preventDefault();
+    }
 
     const form = event.target;
 
@@ -60,5 +59,19 @@ document.getElementById('clusterForm').addEventListener('submit', function(event
         }
     }
 
-    document.getElementById('result').textContent = `Assigned Cluster: ${assignedCluster}`;
+    let message = '';
+
+    switch (assignedCluster) {
+        case 'cluster_1':
+            message = 'Cluster 1: Pode representar dispositivos de entrada com baixo preço e especificações básicas.';
+            break;
+        case 'cluster_2':
+            message = 'Cluster 2: Pode representar dispositivos de médio porte com especificações e preços intermediários.';
+            break;
+        case 'cluster_3':
+            message = 'Cluster 3: Pode representar dispositivos premium com alta performance e preço elevado.';
+            break;
+    }
+
+    document.getElementById('result').textContent = `${message}`;
 });
