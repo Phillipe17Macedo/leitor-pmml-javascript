@@ -31,6 +31,8 @@ label {
 input {
     padding: 8px;
     margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
@@ -51,4 +53,5 @@ button:hover {
     margin-top: 20px;
     text-align: center;
     font-size: 1.2em;
+    color: #333;
 }
