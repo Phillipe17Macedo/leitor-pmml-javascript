@@ -84,5 +84,5 @@ document.getElementById('clusterForm').addEventListener('submit', function(event
             break;
     }
 
-    document.getElementById('result').textContent = `Assigned Cluster: ${assignedCluster}\n${message}`;
+    document.getElementById('result').textContent = `${message}`;
 });

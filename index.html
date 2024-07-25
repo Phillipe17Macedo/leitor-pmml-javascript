@@ -5,47 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cluster Calculation</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Cluster Calculation</h1>
+    <div class="background-image"></div>
+    <main class="container">
+        <h1><i class="fas fa-chart-pie"></i> Cluster Calculation</h1>
         <form id="clusterForm" class="form">
             <div class="form-group">
-                <label for="ratings">Ratings (1 - 5):</label>
+                <label for="ratings"><i class="fas fa-star"></i> Ratings (1 - 5):</label>
                 <input type="number" id="ratings" name="ratings" step="0.01" min="1" max="5" required>
             </div>
             <div class="form-group">
-                <label for="ram">RAM (1 - 16 GB):</label>
+                <label for="ram"><i class="fas fa-memory"></i> RAM (1 - 16 GB):</label>
                 <input type="number" id="ram" name="ram" step="0.01" min="1" max="16" required>
             </div>
             <div class="form-group">
-                <label for="rom">ROM (8 - 512 GB):</label>
+                <label for="rom"><i class="fas fa-hdd"></i> ROM (8 - 512 GB):</label>
                 <input type="number" id="rom" name="rom" step="0.01" min="8" max="512" required>
             </div>
             <div class="form-group">
-                <label for="mobile_size">Mobile Size (4 - 7 inches):</label>
+                <label for="mobile_size"><i class="fas fa-mobile-alt"></i> Mobile Size (4 - 7 inches):</label>
                 <input type="number" id="mobile_size" name="mobile_size" step="0.01" min="4" max="7" required>
             </div>
             <div class="form-group">
-                <label for="primary_cam">Primary Camera (5 - 108 MP):</label>
+                <label for="primary_cam"><i class="fas fa-camera"></i> Primary Camera (5 - 108 MP):</label>
                 <input type="number" id="primary_cam" name="primary_cam" step="0.01" min="5" max="108" required>
             </div>
             <div class="form-group">
-                <label for="selfi_cam">Selfie Camera (2 - 40 MP):</label>
+                <label for="selfi_cam"><i class="fas fa-camera-retro"></i> Selfie Camera (2 - 40 MP):</label>
                 <input type="number" id="selfi_cam" name="selfi_cam" step="0.01" min="2" max="40" required>
             </div>
             <div class="form-group">
-                <label for="battery">Battery Power (1000 - 5000 mAh):</label>
+                <label for="battery"><i class="fas fa-battery-full"></i> Battery Power (1000 - 5000 mAh):</label>
                 <input type="number" id="battery" name="battery" step="0.01" min="1000" max="5000" required>
             </div>
             <div class="form-group">
-                <label for="price">Price (100 - 2000 USD):</label>
+                <label for="price"><i class="fas fa-dollar-sign"></i> Price (100 - 2000 USD):</label>
                 <input type="number" id="price" name="price" step="0.01" min="100" max="2000" required>
             </div>
-            <button type="submit">Calculate Cluster</button>
+            <button type="submit"><i class="fas fa-calculator"></i> Calculate Cluster</button>
         </form>
         <div id="result" class="result"></div>
-    </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 ClusterApp. All rights reserved.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
