@@ -1,5 +1,20 @@
-// script.js
 document.getElementById('clusterForm').addEventListener('submit', function(event) {
+
+    const originalRanges = {
+        ratings: { min: 1, max: 5 },
+        ram: { min: 1, max: 16 }, // Em GB
+        rom: { min: 8, max: 512 }, // Em GB
+        mobile_size: { min: 4, max: 7 }, // Em polegadas
+        primary_cam: { min: 5, max: 108 }, // Em megapixels
+        selfi_cam: { min: 2, max: 40 }, // Em megapixels
+        battery: { min: 1000, max: 5000 }, // Em mAh
+        price: { min: 100, max: 2000 } // Em USD
+    };
+    
+    function normalize(value, min, max) {
+        return (value - min) / (max - min);
+    }    
+
     event.preventDefault();
 
     const form = event.target;
@@ -13,7 +28,16 @@ document.getElementById('clusterForm').addEventListener('submit', function(event
     const battery = parseFloat(form.battery.value);
     const price = parseFloat(form.price.value);
 
-    const inputData = [ratings, ram, rom, mobile_size, primary_cam, selfi_cam, battery, price];
+    const inputData = [
+        normalize(ratings, originalRanges.ratings.min, originalRanges.ratings.max),
+        normalize(ram, originalRanges.ram.min, originalRanges.ram.max),
+        normalize(rom, originalRanges.rom.min, originalRanges.rom.max),
+        normalize(mobile_size, originalRanges.mobile_size.min, originalRanges.mobile_size.max),
+        normalize(primary_cam, originalRanges.primary_cam.min, originalRanges.primary_cam.max),
+        normalize(selfi_cam, originalRanges.selfi_cam.min, originalRanges.selfi_cam.max),
+        normalize(battery, originalRanges.battery.min, originalRanges.battery.max),
+        normalize(price, originalRanges.price.min, originalRanges.price.max)
+    ];
 
     const centroids = {
         cluster_1: [0.5491, 0.5065, 0.1429, 0.0776, 0.8036, 0.4372, 0.3557, 0.0110],
