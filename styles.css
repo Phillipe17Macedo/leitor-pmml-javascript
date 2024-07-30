@@ -13,6 +13,7 @@ body {
     color: #fff;
     overflow: hidden;
     position: relative;
+    background: url('/assets/background-celulares.png') no-repeat center center/cover;
 }
 
 .background-image {
